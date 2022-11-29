@@ -2,9 +2,6 @@
 @use "./mixins" as *;
 
 .comparison {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
     .decision {
         padding: 50px;
@@ -12,6 +9,7 @@
         justify-content: center;
         text-transform: uppercase;
         animation: final 3s ease-in;
+
         .outcome {
             background: white;
             position: relative;
@@ -24,114 +22,91 @@
             border-radius: 5px;
         }
     }
+
     .comparison-container {
-    display: flex;
-    justify-content: center;
-    gap: 75px;
-    animation: show 3s ease-in;
-    @include breakpoint (xsmallScreen) {
+        display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
-    }
-    @include breakpoint (smallScreen) {
-        flex-direction: column;
-        align-items: center;
-        }
-    @include breakpoint (mediumScreen) {
-        flex-direction: row;
-    }
-        .book-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 300px;
-            height: 600px;
-            background: white;
-            border-radius: 5px;
-            padding-top: 25px;
-            position: relative;
+        gap: 75px;
+        margin-bottom: 80px;
+        animation: show 3s ease-in;
 
-            .book-image-container {
-                position: absolute;
-                top: 40px;
-                width: 75%;
-                height: auto;
-            }
-
-            .book-info-container {
-                position: absolute;
-                bottom: 50px;
-            }
+        @include breakpoint (mediumScreen) {
+            align-items: stretch;
+            flex-direction: row;
         }
 
+        .book-container,
         .movie-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             width: 300px;
-            height: 600px;
             background: white;
             border-radius: 5px;
-            padding-top: 25px;
+            padding: 25px 0;
             position: relative;
-            .movie-image-container {
-                position: absolute;
-                top: 40px;
-                width: 75%;
-                height: auto;
-            }
-            
-            .movie-info-container {
-                position: absolute;
-                bottom: 75px;
-            }
         }
+
+        .book-image-container,
+        .movie-image-container {
+            top: 40px;
+            width: 75%;
+        }
+    }
+
+    img {
+        display: block;
     }
 }
 
-.book-lost , .movie-lost {
-    filter: grayscale(100%)blur(1px) brightness(90%) opacity(95%);
-    scale: 0.9;
+.book-lost,
+.movie-lost {
+    filter: grayscale(100%)blur(.6px) brightness(90%) opacity(95%);
 }
 
-.book-won:before, .book-won:after, .movie-won:before, .movie-won:after, .outcome:before, .outcome:after  {
-    content: ''; 
+.book-won:before,
+.book-won:after,
+.movie-won:before,
+.movie-won:after,
+.outcome:before,
+.outcome:after {
+    content: '';
     border-radius: 5px;
-	position: absolute;
-	left: -2px;
-	top: -2px;
-	background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00,#ffff00, #ff0000, #fb0094, 
-		#0000ff, #00ff00,#ffff00, #ff0000);
-	background-size: 400%;
-	width: calc(100% + 4px);
-	height: calc(100% + 4px);
-	z-index: -1;
-    filter:none;
-	animation: steam 30s linear infinite;
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    background: linear-gradient(45deg, #fb0094, #0000ff, #00ff00, #ffff00, #ff0000, #fb0094,
+            #0000ff, #00ff00, #ffff00, #ff0000);
+    background-size: 400%;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    z-index: -1;
+    filter: none;
+    animation: steam 30s linear infinite;
 
 }
 
-.book-won:after, .movie-won:after, .outcome:after {
+.book-won:after,
+.movie-won:after,
+.outcome:after {
     filter: blur(50px);
 }
 
-.book-lost, .movie-lost {
-    scale: 0.9;
-    filter: blur(1px) grayscale(90);
-}
-
 @keyframes steam {
-	0% {
-		background-position: 0 0;
-	}
-	50% {
-		background-position: 400% 0;
-	}
-	100% {
-		background-position: 0 0;
-	}
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
 }
 
 
@@ -139,6 +114,7 @@
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -148,6 +124,7 @@
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
