@@ -14,7 +14,7 @@ import Loader from "./Loader";
 
 const SearchResults = () => {
 
-//STATES FOR HANDLING DATA RETRIEVED FROM APIS
+  //STATES FOR HANDLING DATA RETRIEVED FROM APIS
 
   const [movieData, setMovieData] = useState([]);
   const [bookData, setBookData] = useState([]);
@@ -35,16 +35,16 @@ const SearchResults = () => {
     async function bookPromise() {
       try {
         const bookObject = await axios({
-          url: "https://www.googleapis.com/books/v1/volumes/",
+          url: "https://www.googleapis.com/books/v1/volumes",
           params: {
             q: searchQuery,
             key: API_KEY_BOOKS,
-            language: "en",
+
           },
         });
         return bookObject;
       } catch (error) {
-        setTimeout(()=>setLoading(false), 2000);
+        setTimeout(() => setLoading(false), 2000);
         setMessage1(
           "The Google Books API is currently unavailable. Please try again later."
         );
@@ -56,15 +56,15 @@ const SearchResults = () => {
     async function moviePromise() {
       try {
         const movieData = await axios({
-			url: `https://proxy-ugwolsldnq-uc.a.run.app/https://api.themoviedb.org/3/search/movie/`,
-			params: {
-				api_key: "372d3f4f5198c56ab56f69a5848e02d3",
-				query: searchQuery,
-			},
-		})
+          url: `https://proxy-ugwolsldnq-uc.a.run.app/https://api.themoviedb.org/3/search/movie/`,
+          params: {
+            api_key: "372d3f4f5198c56ab56f69a5848e02d3",
+            query: searchQuery,
+          },
+        })
         return movieData;
       } catch (error) {
-        setTimeout(()=>setLoading(false), 2000);
+        setTimeout(() => setLoading(false), 2000);
         setMessage2(
           "The Movie Database API is currently unavailable. Please try again later."
         );
@@ -77,12 +77,12 @@ const SearchResults = () => {
 
       //code below leaves 2000ms for loading screen, then filters movies and books that match the query string. Movie and book titles are converted to lowercase comparision. Additional if/else statements ensure object properties with missing information are given placeholders for display. 
 
-      setTimeout(()=>setLoading(false), 2000);
+      setTimeout(() => setLoading(false), 2000);
       const newBookState = values[0].data.items
-        .filter(
-          (book) =>
-            book.volumeInfo.title.toLowerCase() === searchQuery.toLowerCase()
-        )
+        // .filter(
+        //   (book) =>
+        //     book.volumeInfo.title.toLowerCase() === searchQuery.toLowerCase()
+        // )
         .map((book) => {
           if (!book.volumeInfo.imageLinks) {
             book.volumeInfo.imageLinks = {};
@@ -105,13 +105,25 @@ const SearchResults = () => {
             book.volumeInfo.subtitle = ""
           }
           return book;
+        }).sort((a, b) => {//Sort alphabetically
+          const nameA = `${a.volumeInfo.title.toUpperCase()}${a.volumeInfo.subtitle.toUpperCase()}`; // ignore upper and lowercase
+          const nameB = `${b.volumeInfo.title.toUpperCase()}${b.volumeInfo.subtitle.toUpperCase()}`; // ignore upper and lowercase
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          // names must be equal
+          return 0;
         });
-
+        console.log(newBookState);
       setBookData(newBookState);
+
       const newMovieState = values[1].data.results
-        .filter(
-          (movie) => movie.title.toLowerCase() === searchQuery.toLowerCase()
-        )
+        // .filter(
+        //   (movie) => movie.title.toLowerCase() === searchQuery.toLowerCase()
+        // )
         .map((movie) => {
           if (!movie.poster_path) {
             movie.poster_path = noMoviePic;
@@ -129,17 +141,30 @@ const SearchResults = () => {
             movie.overview = "No synopsis available."
           }
           return movie;
+        })
+        .sort((a, b) => {//Sort alphabetically
+          const nameA = a.title.toUpperCase(); // ignore upper and lowercase
+          const nameB = b.title.toUpperCase(); // ignore upper and lowercase
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          // names must be equal
+          return 0;
         });
+        console.log(newMovieState);
       setMovieData(newMovieState);
       setShowMessage(true);
     });
   }, [API_KEY_BOOKS, searchQuery]); //end of use effect
 
 
-//LOADER COMPONENT WHICH RUNS FOR 2000MS ON PAGE LOAD 
+  //LOADER COMPONENT WHICH RUNS FOR 2000MS ON PAGE LOAD 
   if (loading) {
     return <Loader />
-  } 
+  }
 
   return (
     <section className="search-results">

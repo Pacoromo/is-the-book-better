@@ -7,7 +7,7 @@ import Movie from "./Movie";
 import Comparison from "./Comparison";
 
 const Results = ({ bookArray, movieArray, showMessage }) => {
-   
+
     //States to control screens
     const [showBook, setShowBook] = useState(true);
     const [showMovie, setShowMovie] = useState(false);
@@ -27,14 +27,14 @@ const Results = ({ bookArray, movieArray, showMessage }) => {
 
     }, [bookArray.length, movieArray.length]);
 
-// SEARCH RESULTS FOR BOOK AND MOVIE ARE PASSED DOWN TO BOOK.JS AND MOVIE.JS FROM THIS CODE BELOW. THE CHILD COMPONENTS THEN UPDATE THE STATES IN THIS COMPONENT TO SHOW A SELECTED BOOK AND MOVIE FOR COMPARISION. THESE SELECTIONS ARE THEN PASSED TO COMPARISION.JS.  
+    // SEARCH RESULTS FOR BOOK AND MOVIE ARE PASSED DOWN TO BOOK.JS AND MOVIE.JS FROM THIS CODE BELOW. THE CHILD COMPONENTS THEN UPDATE THE STATES IN THIS COMPONENT TO SHOW A SELECTED BOOK AND MOVIE FOR COMPARISION. THESE SELECTIONS ARE THEN PASSED TO COMPARISION.JS.  
     return (
 
         <section className="comparison">
             <div className="wrapper">
                 <div className="result-container">
-                  {/* if no books are found in either API, these messages are displayed */}
-  
+                    {/* if no books are found in either API, these messages are displayed */}
+
                     {bookArray.length === 0 && showMessage ? (
                         <h6>No books were found, Please try another Title......</h6>
                     ) : movieArray.length === 0 && showMessage ? (

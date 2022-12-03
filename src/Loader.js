@@ -6,7 +6,7 @@ const Loader = () => {
     <div className="loader-container">
       <div className="gif-container">
         <img src={loading} className="loading" alt='animated book loading screen' />
-      </div> 
+      </div>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 const Footer = () => {
-  return (
+	return (
 		<footer>
 			<div className="wrapper">
 				<p>
@@ -20,7 +20,7 @@ const Footer = () => {
 				</p>
 			</div>
 		</footer>
-  )
+	)
 }
 
 export default Footer;

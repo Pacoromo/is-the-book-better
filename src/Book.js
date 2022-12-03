@@ -1,20 +1,21 @@
 const Book = ({ bookArray, setBook, setShowMovie, setShowBook }) => {
 
-//ONCE USER CLICKS ON A BOOK, THIS FUNCTION CALLS THE SETFUNCTIONS OF STATES IN PARENT COMPONENT RESULTS.JS. 
+    //ONCE USER CLICKS ON A BOOK, THIS FUNCTION CALLS THE SETFUNCTIONS OF STATES IN PARENT COMPONENT RESULTS.JS. 
     const handleClick = (bookSelection) => {
         setShowMovie(true);
         setShowBook(false);
         setBook(bookSelection);
     };
-  
-//THIS COMPONENT RETURNS A LIST OF BOOKS FROM SEARCH TERMS TO BE SELECTED BY USER 
+
+    //THIS COMPONENT RETURNS A LIST OF BOOKS FROM SEARCH TERMS TO BE SELECTED BY USER 
     return (
         <section className="book-display">
             <div className="wrapper">
                 <h2>Please Select a Book</h2>
+                <p>Your book is not listed?. Try a more specific search</p>
                 <ul className="book-pick">
                     {bookArray.map((bookObj) => {
-             
+
                         return (
                             <li key={bookObj.id}>
                                 <button
@@ -24,8 +25,11 @@ const Book = ({ bookArray, setBook, setShowMovie, setShowBook }) => {
                                     className="select-book-btn">
                                     <img
                                         src={bookObj.volumeInfo.imageLinks.thumbnail}
-                                        alt={bookObj.volumeInfo.title}/>
+                                        alt={bookObj.volumeInfo.title} />
                                 </button>
+                                <button className="select" onClick={() => {
+                                        handleClick(bookObj);
+                                    }}>Select</button>
 
                                 <p className="book-title">{bookObj.volumeInfo.title} {bookObj.volumeInfo.subtitle === "" ? "" : "-"} {bookObj.volumeInfo.subtitle}</p>
                                 <p className="book-author">
