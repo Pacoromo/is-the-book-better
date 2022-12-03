@@ -117,7 +117,6 @@ const SearchResults = () => {
           // names must be equal
           return 0;
         });
-        console.log(newBookState);
       setBookData(newBookState);
 
       const newMovieState = values[1].data.results
@@ -154,7 +153,6 @@ const SearchResults = () => {
           // names must be equal
           return 0;
         });
-        console.log(newMovieState);
       setMovieData(newMovieState);
       setShowMessage(true);
     });
