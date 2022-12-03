@@ -28,8 +28,8 @@ const Book = ({ bookArray, setBook, setShowMovie, setShowBook }) => {
                                         alt={bookObj.volumeInfo.title} />
                                 </button>
                                 <button className="select" onClick={() => {
-                                        handleClick(bookObj);
-                                    }}>Select</button>
+                                    handleClick(bookObj);
+                                }}>Select</button>
 
                                 <p className="book-title">{bookObj.volumeInfo.title} {bookObj.volumeInfo.subtitle === "" ? "" : "-"} {bookObj.volumeInfo.subtitle}</p>
                                 <p className="book-author">

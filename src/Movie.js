@@ -18,7 +18,7 @@ const Movie = ({ movieArray, setMovie, setShowMovie, setShowComparison }) => {
                         return (
                             <li key={movieObj.id}>
                                 <button onClick={() => { handleClick(movieObj) }} className="select-movie-btn"><img src={movieObj.poster_path} alt={movieObj.title} /></button>
-                                
+
 
                                 <p className="movie-title">{movieObj.title}</p>
                                 <p className="release-date">Released: {movieObj.release_date}</p>
@@ -26,8 +26,8 @@ const Movie = ({ movieArray, setMovie, setShowMovie, setShowComparison }) => {
                                 <p className="synopsis">Synopsis: {movieObj.overview}</p>
 
                                 <button className="select" onClick={() => {
-                                        handleClick(movieObj);
-                                    }}>Select</button>
+                                    handleClick(movieObj);
+                                }}>Select</button>
                             </li>
                         ) // second return brackets end
                     })}{/* movie.array brackets end */}

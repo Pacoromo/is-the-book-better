@@ -10,7 +10,7 @@ const Main = () => {
       <div className="main-search-container">
         <h2>Is the book better?</h2>
         <div className="wrapper">
-          <p>This app settles the age-old question: which was better? The book or the movie? <br /> To find out, simply enter the name of a book below and select the edition you want to compare.</p>
+          <p>This app settles the age-old question: which was better? The book or the movie? <br /> To find out, simply enter the name of a book in the search field on top. From the results list, select the edition you want to compare.</p>
           <p>
             Then pick a movie with the same title to see whether the book or movie is superior according to consumer ratings!
           </p>

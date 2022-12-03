@@ -11,7 +11,7 @@ body {
   margin: 0 auto;
 }
 
-ul { 
+ul {
   padding: 0;
 }
 
@@ -21,7 +21,7 @@ li {
 
 a {
   text-decoration: none;
-  
+
   &:link {
     color: inherit;
   }
@@ -29,10 +29,12 @@ a {
   &:visited {
     color: inherit;
   }
+
   &:hover {
     // color: white;
     cursor: pointer;
   }
+
   &:focus {
     color: inherit;
   }

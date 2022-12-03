@@ -30,7 +30,7 @@ main {
 
 .main-video {
     display: none;
-    filter: brightness(50%);
+    filter: brightness(25%);
 
     @include breakpoint(largeScreen) {
         display: block;
@@ -71,7 +71,7 @@ main {
     }
 
     .wrapper {
-        background: #5da9c260;
+        background-color: rgba(92, 170, 193, .6);
         border-radius: 10px;
         padding: 25px;
         width: 85%;

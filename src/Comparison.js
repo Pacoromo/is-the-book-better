@@ -31,8 +31,8 @@ const Comparison = ({ selectedBook, selectedMovie }) => {
             <div className="book-info-container">
               <p>{selectedBook.volumeInfo.title}</p>
               <p>Author(s): {selectedBook.volumeInfo.authors.join(", ")}</p>
-              <p>Average Reader Rating: {bookRating}/10</p>
               <p>Published Date: {selectedBook.volumeInfo.publishedDate}</p>
+              <p>Average Reader Rating: {bookRating}/10</p>
             </div>{/* book-info-container div end */}
           </div>{/* book-container div end */}
 
