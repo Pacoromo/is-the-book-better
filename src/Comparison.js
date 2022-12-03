@@ -29,7 +29,7 @@ const Comparison = ({ selectedBook, selectedMovie }) => {
             </div>{/* book-image-container div end */}
 
             <div className="book-info-container">
-              <p>Book Title: {selectedBook.volumeInfo.title}</p>
+              <p>{selectedBook.volumeInfo.title}</p>
               <p>Author(s): {selectedBook.volumeInfo.authors.join(", ")}</p>
               <p>Average Reader Rating: {bookRating}/10</p>
               <p>Published Date: {selectedBook.volumeInfo.publishedDate}</p>
@@ -43,7 +43,7 @@ const Comparison = ({ selectedBook, selectedMovie }) => {
             </div>{/* movie-image-container div end */}
 
             <div className="movie-info-container">
-              <p>Movie Title: {selectedMovie.title}</p>
+              <p>{selectedMovie.title}</p>
               <p>Released: {selectedMovie.release_date}</p>
               <p>Average Viewer Rating: {movieRating}/10</p>
             </div>{/* movie-info-container div end */}

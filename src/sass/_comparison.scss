@@ -27,13 +27,13 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        // align-items: center;
         gap: 75px;
         margin-bottom: 80px;
         animation: show 3s ease-in;
 
-        @include breakpoint (mediumScreen) {
-            align-items: stretch;
+        @include breakpoint (smallScreen) {
+            // align-items: stretch;
             flex-direction: row;
         }
 
@@ -42,18 +42,32 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            width: 300px;
+            // justify-content: space-between;
+            width: 100%; 
             background: white;
             border-radius: 5px;
             padding: 25px 0;
             position: relative;
+            @include breakpoint(smallScreen){
+                width: 300px;
+            }
         }
 
         .book-image-container,
         .movie-image-container {
             top: 40px;
             width: 75%;
+        }
+
+        .book-info-container,
+        .movie-info-container {
+            padding: 2em;
+            margin-top: auto;
+        }
+        .book-info-container p:first-child,
+        .movie-info-container p:first-child {
+            text-align: center;
+            font-weight: 700;
         }
     }
 
