@@ -41,8 +41,6 @@ a {
 img {
   width: 100%;
   height: auto;
-  // min-width: 200px;
-  // max-width: 300px;
 }
 
 button {
@@ -51,4 +49,10 @@ button {
   border: none;
   cursor: pointer;
   background: none;
+}
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
