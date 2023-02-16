@@ -56,7 +56,7 @@ const SearchResults = () => {
     async function moviePromise() {
       try {
         const movieData = await axios({
-          url: `https://proxy-ugwolsldnq-uc.a.run.app/https://api.themoviedb.org/3/search/movie/`,
+          url: `https://proxy.junocollege.com/https://api.themoviedb.org/3/search/movie/`,
           params: {
             api_key: "372d3f4f5198c56ab56f69a5848e02d3",
             query: searchQuery,
