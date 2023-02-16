@@ -56,7 +56,7 @@ const SearchResults = () => {
     async function moviePromise() {
       try {
         const movieData = await axios({
-          url: `https://proxy.junocollege.com/https://api.themoviedb.org/3/search/movie/`,
+          url: `https://proxy.junocollege.com/https://api.themoviedb.org/3/search/movie`,
           params: {
             api_key: "372d3f4f5198c56ab56f69a5848e02d3",
             query: searchQuery,
@@ -79,10 +79,6 @@ const SearchResults = () => {
 
       setTimeout(() => setLoading(false), 2000);
       const newBookState = values[0].data.items
-        // .filter(
-        //   (book) =>
-        //     book.volumeInfo.title.toLowerCase() === searchQuery.toLowerCase()
-        // )
         .map((book) => {
           if (!book.volumeInfo.imageLinks) {
             book.volumeInfo.imageLinks = {};
@@ -120,9 +116,6 @@ const SearchResults = () => {
       setBookData(newBookState);
 
       const newMovieState = values[1].data.results
-        // .filter(
-        //   (movie) => movie.title.toLowerCase() === searchQuery.toLowerCase()
-        // )
         .map((movie) => {
           if (!movie.poster_path) {
             movie.poster_path = noMoviePic;
